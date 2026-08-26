@@ -1,6 +1,6 @@
 import {test,expect} from '@playwright/test';
-test('login page is displayed',async ({page})=>{
-    await page.goto('http://localhost:3000/');
+test('SCRUM-10: standard user can log in successfully',async ({page})=>{
+    await page.goto('/');
     await expect(page).toHaveTitle(/Swag Labs/);
 
     await page.locator('#user-name').fill('standard_user');
