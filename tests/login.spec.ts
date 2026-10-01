@@ -34,4 +34,13 @@ test('user cannot log in with invalid credentials', async ({ page }) => {
   );
   });
 
+  test('SCRUM-13: problem user can log in successfully', async ({ page }) => {
+    
+  await page.goto('/');
+  await page.locator('#user-name').fill('problem_user');
+  await page.locator('#password').fill('secret_sauce');
+  await page.locator('#login-button').click();
 
+  await expect(page).toHaveURL(/inventory\.html/);
+  await expect(page.getByText('Products')).toBeVisible();
+});
